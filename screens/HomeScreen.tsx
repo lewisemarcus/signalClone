@@ -21,7 +21,10 @@ export default function TabOneScreen() {
             {/* FlatList enables scrollability */}
             <FlatList
                 data={chatRoomsData}
-                renderItem={({ item }) => <ChatRoomItem chatRoom={item} />}
+                // rename's the item from props to eachChatRoom
+                renderItem={({ item: eachChatRoom }) => (
+                    <ChatRoomItem chatRoom={eachChatRoom} />
+                )}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
             />
