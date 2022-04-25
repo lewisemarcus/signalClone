@@ -1,16 +1,10 @@
 import React from "react"
-import { View, Text, StyleSheet, FlatList } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 
 export default function Message({ chat }) {
     const blue = "#3777f0"
     const grey = "lightgrey"
     const myId = "u1"
-
-    // const isMe = () => {
-    //     for (let each of chat) {
-    //         if (each.user.id === "u1") return true
-    //     }
-    // }
 
     const isMe = chat.user.id === myId
 
@@ -18,10 +12,7 @@ export default function Message({ chat }) {
         <View
             style={[
                 styles.container,
-                {
-                    backgroundColor: isMe ? grey : blue,
-                    marginLeft: isMe ? "auto" : 10,
-                },
+                isMe ? styles.rightContainer : styles.leftContainer,
             ]}
         >
             <Text style={{ color: isMe ? "black" : "white" }}>
@@ -38,6 +29,16 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 10,
         maxWidth: "65%",
+    },
+    leftContainer: {
+        backgroundColor: "#3777f0",
+        marginLeft: 10,
+        marginRight: "auto",
+    },
+    rightContainer: {
+        backgroundColor: "lightgrey",
+        marginLeft: "auto",
+        marginRight: 10,
     },
     text: {
         color: "white",
